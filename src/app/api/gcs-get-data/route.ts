@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
-import { supabase } from "@/lib/supabase";
+import { createClient } from '@supabase/supabase-js'
 
 export async function GET(params: NextRequest) {
     try {
+        const supabase = createClient(process.env.URL as string, process.env.KEY as string)
         const { data, error } = await supabase
             .from('GCS')
             .select()
