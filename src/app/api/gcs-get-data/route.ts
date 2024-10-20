@@ -15,7 +15,7 @@ export async function GET(params: NextRequest) {
         }, { status: 200 });
 
         // Disable caching
-        response.headers.set('Cache-Control', 'no-store');
+        response.headers.set('Cache-Control', 'no-cache, no-store, max-age=0, must-revalidate');
 
         return response;
     }
