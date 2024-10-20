@@ -8,6 +8,9 @@ export async function GET(params: NextRequest) {
             .from('GCS')
             .select()
 
+        if (error)
+            throw error
+
         const response = NextResponse.json({
             message: "Success to get data from Supabase 2 - [1]",
             state: true,
