@@ -7,16 +7,21 @@ export async function GET(params: NextRequest) {
             .from('GCS')
             .select()
 
-        return NextResponse.json({
-            message: "Succes to get data on supabase",
+        const response = NextResponse.json({
+            message: "Success to get data from Supabase",
             state: true,
             data: data
-        }, { status: 200 })
+        }, { status: 200 });
+
+        // Disable caching
+        response.headers.set('Cache-Control', 'no-store');
+
+        return response;
     }
     catch (err) {
         return NextResponse.json({
             message: "Fail to get data",
             state: false,
-        })
+        }, { status: 500 });
     }
 }
