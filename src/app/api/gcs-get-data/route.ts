@@ -8,7 +8,7 @@ export async function GET(params: NextRequest) {
             .select()
 
         return NextResponse.json({
-            message: "Succes to get data",
+            message: "Succes to get data on supabase",
             state: true,
             data: data
         }, { status: 200 })
